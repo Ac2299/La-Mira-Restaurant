@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA-MIRA | القائمة الفاخرة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-burgundy: #58111a; /* لون الخلفية الفاخر المستوحى من الفيديو */
+            --card-bg: rgba(255, 255, 255, 0.08);
+            --border-color: rgba(255, 255, 255, 0.15);
+            --primary-gold: #d4af37;
+            --text-white: #ffffff;
+            --text-gray: #d1d5db;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-burgundy); color: var(--text-white); min-height: 100vh; padding-bottom: 50px; }
+
+        /* الهيدر العلوي الثابت */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(0,0,0,0.2);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .brand-logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; color: var(--text-white); }
+        .order-top-btn {
+            background: var(--text-white);
+            color: var(--bg-burgundy);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        /* القسم الرئيسي الترحيبي */
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .hero-section h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 10px; }
+        .hero-section p { color: var(--text-gray); font-size: 1rem; max-width: 500px; margin: 0 auto; }
+
+        /* شريط الأقسام المتحرك بالجنب (Horizontal Scroll مثل الفيديو) */
+        .categories-scroll-wrapper {
+            padding: 10px 0 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            scrollbar-width: none;
+        }
+        .categories-scroll-wrapper::-webkit-scrollbar { display: none; }
+
+        .categories-flex {
+            display: inline-flex;
+            gap: 12px;
+            padding: 0 20px;
+        }
+
+        .cat-chip {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-white);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .cat-chip.active, .cat-chip:hover {
+            background: var(--text-white);
+            color: var(--bg-burgundy);
+            border-color: var(--text-white);
+        }
+
+        /* أقسام الأطباق والـ Cards المتحركة بالجنب[cite: 4] */
+        .menu-category-container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-gold);
+        }
+
+        /* الـ Cards اللي بتتحرك أفقياً بالجنب[cite: 4] */
+        .horizontal-cards-grid {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 15px;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+        .horizontal-cards-grid::-webkit-scrollbar { display: none; }
+
+        .food-item-card {
+            min-width: 260px;
+            max-width: 260px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            backdrop-filter: blur(5px);
+        }
+        .food-item-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .food-info {
+            padding: 15px;
+        }
+        .food-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .food-info p {
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px 15px;
+        }
+        .item-price {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--primary-gold);
+        }
+        .order-btn-mini {
+            background: rgba(255,255,255,0.15);
+            color: var(--text-white);
+            border: 1px solid var(--border-color);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .order-btn-mini:hover {
+            background: var(--text-white);
+            color: var(--bg-burgundy);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر العلوي -->
+    <div class="top-bar">
+        <div class="brand-logo">LA-MIRA</div>
+        <a href="#menu" class="order-top-btn">اطلب الآن</a>
+    </div>
+
+    <!-- قسم الترحيب -->
+    <div class="hero-section">
+        <h1>صانع السعادة.. وأجمل الأجواء</h1>
+        <p>استكشف أشهى الأطباق والحلويات الفاخرة، تُحضر بحب كل يوم.</p>
+    </div>
+
+    <!-- شريط الأقسام الأفقي المتحرك بالجنب[cite: 4] -->
+    <div class="categories-scroll-wrapper">
+        <div class="categories-flex">
+            <button class="cat-chip active" onclick="filterCategory('all')"><i class="fa-solid fa-fire"></i> الكل</button>
+            <button class="cat-chip" onclick="filterCategory('mains')"><i class="fa-solid fa-plate-wheat"></i> الأطباق الرئيسية</button>
+            <button class="cat-chip" onclick="filterCategory('fastfood')"><i class="fa-solid fa-burger"></i> الوجبات السريعة</button>
+            <button class="cat-chip" onclick="filterCategory('desserts')"><i class="fa-solid fa-ice-cream"></i> الحلويات</button>
+            <button class="cat-chip" onclick="filterCategory('beverages')"><i class="fa-solid fa-mug-hot"></i> المشروبات</button>
+        </div>
+    </div>
+
+    <!-- قائمة الطعام مع السحب الأفقي بالجنب[cite: 4] -->
+    <div class="menu-category-container" id="menu">
+        
+        <div class="section-title">
+            <i class="fa-solid fa-star"></i> اختراتنا المميزة
+        </div>
+
+        <!-- سحب أفقـي للبطاقات (Horizontal Scroll Cards) -->
+        <div class="horizontal-cards-grid">
+            
+            <!-- صنف 1 -->
+            <div class="food-item-card">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=500&q=80" alt="Burger">
+                <div class="food-info">
+                    <h3>دبل تشيز برجر</h3>
+                    <p>قطعتين لحم بقرى صافي مع جبنة شيدر وصوص LA-MIRA.</p>
+                </div>
+                <div class="card-bottom">
+                    <span class="item-price">280 EGP</span>
+                    <a href="https://wa.me/201500576313?text=أريد%20طلب%20دبل%20تشيز%20برجر" class="order-btn-mini" target="_blank">اطلب</a>
+                </div>
+            </div>
+
+            <!-- صنف 2 -->
+            <div class="index-item food-item-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=80" alt="Pizza">
+                <div class="food-info">
+                    <h3>بيتزا مارجريتا</h3>
+                    <p>عجين مخمر طازج، صوص طماطم، وجبنة موتسريلا سائحة.</p>
+                </div>
+                <div class="card-bottom">
+                    <span class="item-price">220 EGP</span>
+                    <a href="https://wa.me/201500576313?text=أريد%20طلب%20بيتزا%20مارجريتا" class="order-btn-mini" target="_blank">اطلب</a>
+                </div>
+            </div>
+
+            <!-- صنف 3 -->
+            <div class="food-item-card">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=500&q=80" alt="Dessert">
+                <div class="food-info">
+                    <h3>تشيز كيك فراولة</h3>
+                    <p>قالب تشيز كيك ناعم مغطى بصوص الفراولة الطازجة.</p>
+                </div>
+                <div class="card-bottom">
+                    <span class="item-price">110 EGP</span>
+                    <a href="https://wa.me/201500576313?text=أريد%20طلب%20تشيز%20كيك" class="order-btn-mini" target="_blank">اطلب</a>
+                </div>
+            </div>
+
+            <!-- صنف 4 -->
+            <div class="food-item-card">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=500&q=80" alt="Drink">
+                <div class="food-info">
+                    <h3>موهيتو منعش</h3>
+                    <p>مزيج رائع من النعناع، الليمون الصافي ومشروب الصودا.</p>
+                </div>
+                <div class="card-bottom">
+                    <span class="item-price">75 EGP</span>
+                    <a href="https://wa.me/201500576313?text=أريد%20طلب%20موهيتو" class="order-btn-mini" target="_blank">اطلب</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // تفاعل أزرار الأقسام الأفقية
+        const chips = document.querySelectorAll('.cat-chip');
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
