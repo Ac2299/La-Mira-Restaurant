@@ -47,7 +47,11 @@ button{font:inherit}
  border-radius:999px;padding:11px 18px;cursor:pointer;font-weight:700;font-size:13px
 }
 .lang{background:transparent;color:#fff;padding:10px 14px}
-.menuBtn{display:none;background:transparent;border:0;color:#fff;font-size:23px;cursor:pointer}.mobileMenu{display:none;position:fixed;z-index:49;top:78px;left:14px;right:14px;background:rgba(35,7,10,.96);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:10px;box-shadow:0 18px 45px rgba(0,0,0,.28)}.mobileMenu.open{display:block}.mobileMenu a{display:block;padding:13px 15px;border-radius:13px;color:#ead8d7}.mobileMenu a:hover{background:rgba(255,255,255,.08);color:#fff}
+.menuBtn{display:none;background:transparent;border:0;color:#fff;font-size:23px;cursor:pointer}
+.mobileMenu{display:none;position:fixed;z-index:49;top:78px;left:14px;right:14px;background:rgba(35,7,10,.96);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.15);border-radius:22px;padding:10px;box-shadow:0 18px 45px rgba(0,0,0,.28)}
+.mobileMenu.open{display:block}
+.mobileMenu a{display:block;padding:13px 15px;border-radius:13px;color:#ead8d7}
+.mobileMenu a:hover{background:rgba(255,255,255,.08);color:#fff}
 
 .hero{min-height:100svh;position:relative;display:grid;place-items:center;overflow:hidden}
 .hero-bg{
@@ -89,22 +93,23 @@ button{font:inherit}
 .story-img img{width:100%;height:100%;object-fit:cover;transition:1s}.story-img:hover img{transform:scale(1.05)}
 .story-img .tag{position:absolute;bottom:22px;right:22px;background:rgba(255,255,255,.9);color:var(--wine);padding:10px 16px;border-radius:999px;font-weight:700}
 
-.category-wrap{position:relative}
 .categories{display:flex;gap:14px;overflow:auto;padding:5px 2px 18px;scrollbar-width:none}
 .categories::-webkit-scrollbar{display:none}
-.cat{min-width:190px;height:230px;border-radius:25px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.1);cursor:pointer}
+.cat{min-width:190px;height:230px;border-radius:25px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.1);cursor:pointer;flex-shrink:0}
 .cat img{width:100%;height:100%;object-fit:cover;transition:.6s}.cat:hover img{transform:scale(1.08)}
 .cat:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(22,3,5,.85))}
 .cat b{position:absolute;z-index:2;bottom:18px;right:18px;font-size:20px}
 
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(min-width:768px){.products{grid-template-columns:repeat(4,1fr)}}
 .card{background:#fff;color:var(--ink);border-radius:25px;overflow:hidden;box-shadow:0 15px 45px rgba(24,2,5,.12);transition:.35s}
 .card:hover{transform:translateY(-8px)}
 .card-img{height:245px;overflow:hidden;background:#eee}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:.7s}.card:hover img{transform:scale(1.06)}
 .card-body{padding:20px}.card h3{font-size:18px}.card p{font-size:12px;color:#8b7676;line-height:1.8;margin:8px 0 17px}
 .price{display:flex;align-items:center;justify-content:space-between;color:var(--wine);font-weight:800}
-.price button{border:0;background:var(--wine);color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:19px}
+.price button{border:0;background:var(--wine);color:#fff;border-radius:50%;width:38px;height:38px;cursor:pointer;font-size:19px;transition:0.3s}
+.price button:hover{background:var(--wine2);transform:scale(1.1)}
 
 .feature{display:grid;grid-template-columns:1.1fr .9fr;min-height:550px;border-radius:35px;overflow:hidden;background:#4e0d14;box-shadow:var(--shadow)}
 .feature-img{background:url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=85") center/cover}
@@ -136,7 +141,7 @@ button{font:inherit}
 @media(max-width:900px){
  .navlinks{display:none}.menuBtn{display:block}.nav{padding:9px 13px}
  .story,.feature,.contact{grid-template-columns:1fr}.story-img{height:430px}.feature-img{height:380px;order:2}
- .products{grid-template-columns:repeat(2,1fr)}.locations{grid-template-columns:1fr 1fr}
+ .locations{grid-template-columns:1fr 1fr}
  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:210px}.gallery .big{grid-row:span 2}
 }
 @media(max-width:600px){
@@ -144,17 +149,19 @@ button{font:inherit}
  .logo{font-size:25px}.pill{padding:9px 13px;font-size:11px}.lang{padding:8px 11px}
  .hero h1{letter-spacing:-5px}.hero-content{padding-top:130px}.hero p{line-height:1.8}
  .section-head{display:block}.section-head p{margin-top:15px}.story-copy .stats{gap:6px}
- .products{grid-template-columns:1fr 1fr;gap:10px}.card-img{height:180px}.card-body{padding:14px}.card p{font-size:11px}
+ .card-img{height:180px}.card-body{padding:14px}.card p{font-size:11px}
  .locations{grid-template-columns:1fr}.feature-copy{padding:45px 25px}.feature-img{height:300px}
  .gallery{grid-template-columns:1fr 1fr;grid-auto-rows:150px}.gallery .big{grid-row:span 2}
  .footer-in{display:block;text-align:center}.footer .logo{margin-bottom:10px}
 }
 
-/* ===== WhatsApp Ordering ===== */
-.cart-fab{position:fixed;z-index:80;bottom:22px;left:22px;width:58px;height:58px;border:0;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 12px 35px rgba(0,0,0,.28);font-size:25px;cursor:pointer;display:none}
-.cart-fab.show{display:block}.cart-count{position:absolute;top:-4px;right:-3px;background:var(--wine);color:#fff;border-radius:50%;min-width:22px;height:22px;font-size:11px;display:grid;place-items:center;font-weight:800}
+/* ===== WhatsApp Ordering & Cart Modal ===== */
+.cart-fab{position:fixed;z-index:80;bottom:22px;left:22px;width:58px;height:58px;border:0;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 12px 35px rgba(0,0,0,.28);font-size:25px;cursor:pointer;display:none;align-items:center;justify-content:center}
+.cart-fab.show{display:flex}
+.cart-count{position:absolute;top:-4px;right:-3px;background:var(--wine);color:#fff;border-radius:50%;min-width:22px;height:22px;font-size:11px;display:grid;place-items:center;font-weight:800}
 .cart-panel{position:fixed;z-index:90;inset:0;background:rgba(15,2,4,.62);backdrop-filter:blur(7px);display:none;align-items:flex-end;justify-content:center}
-.cart-panel.open{display:flex}.cart-box{width:min(560px,100%);max-height:88vh;background:var(--paper);color:var(--ink);border-radius:28px 28px 0 0;padding:24px;overflow:auto;box-shadow:0 -20px 60px rgba(0,0,0,.25)}
+.cart-panel.open{display:flex}
+.cart-box{width:min(560px,100%);max-height:88vh;background:var(--paper);color:var(--ink);border-radius:28px 28px 0 0;padding:24px;overflow:auto;box-shadow:0 -20px 60px rgba(0,0,0,.25)}
 .cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.cart-head h3{font-size:23px;color:var(--wine)}
 .cart-close{border:0;background:#f0e4df;color:var(--wine);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:20px}
 .cart-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid #eaded8}
@@ -162,8 +169,10 @@ button{font:inherit}
 .qty{display:flex;align-items:center;gap:8px}.qty button{border:0;width:28px;height:28px;border-radius:50%;background:var(--wine);color:#fff;cursor:pointer}
 .cart-total{display:flex;justify-content:space-between;font-size:19px;font-weight:800;padding:18px 0}
 .order-form{display:grid;gap:9px}.order-form input,.order-form textarea{width:100%;border:1px solid #e2d5cf;border-radius:13px;padding:12px;font:inherit;outline:none;background:#fff}
-.order-form textarea{min-height:75px;resize:vertical}.wa-btn{width:100%;border:0;border-radius:14px;background:#25D366;color:#fff;padding:14px;font-weight:800;cursor:pointer;font-size:15px}.empty-cart{text-align:center;padding:30px;color:#8b7676}
-@media(max-width:600px){.cart-fab{bottom:16px;left:16px}.cart-box{padding:19px}}
+.order-form textarea{min-height:75px;resize:vertical}
+.wa-btn{width:100%;border:0;border-radius:14px;background:#25D366;color:#fff;padding:14px;font-weight:800;cursor:pointer;font-size:15px;transition:0.3s}
+.wa-btn:hover{background:#20ba5a}
+.empty-cart{text-align:center;padding:30px;color:#8b7676}
 
 /* ===== Enhanced checkout ===== */
 .checkout-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -210,7 +219,7 @@ button{font:inherit}
     <div class="eyebrow"><i></i><span data-ar="تجربة بطعم مختلف" data-en="A taste worth remembering">تجربة بطعم مختلف</span></div>
     <h1>LA<span>-</span>MIRA</h1>
     <p data-ar="قهوة مختصة، حلويات صنعت بحب، وتفاصيل صغيرة تخلي كل زيارة ليها حكاية."
-       data-en="Specialty coffee, crafted desserts, and little details that make every visit a story.">
+        data-en="Specialty coffee, crafted desserts, and little details that make every visit a story.">
        قهوة مختصة، حلويات صنعت بحب، وتفاصيل صغيرة تخلي كل زيارة ليها حكاية.
     </p>
     <div class="hero-cta">
@@ -344,6 +353,103 @@ button{font:inherit}
  </div>
 </footer>
 
+<!-- Floating WhatsApp Cart Button -->
+<button class="cart-fab" id="cartFab" aria-label="سلة الطلبات">
+  🛒<span class="cart-count" id="cartCount">0</span>
+</button>
+
+<!-- Cart & Checkout Modal Panel -->
+<div class="cart-panel" id="cartPanel">
+  <div class="cart-box">
+    <div class="cart-head">
+      <h3>سلة الطلبات</h3>
+      <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div id="cartItems"></div>
+    
+    <div id="cartSummary" style="display:none; margin-top:15px;">
+      <div class="order-form">
+        <div class="checkout-grid">
+          <div>
+            <div class="checkout-label">اسم العميل</div>
+            <input type="text" id="customerName" placeholder="اكتب اسمك هنا">
+          </div>
+          <div>
+            <div class="checkout-label">رقم الهاتف</div>
+            <input type="tel" id="customerPhone" placeholder="010xxxxxxxx">
+          </div>
+        </div>
+
+        <div class="checkout-grid">
+          <div>
+            <div class="checkout-label">الفرع المطلوب</div>
+            <select id="branchSelect">
+              <option value="LA-MIRA Downtown">LA-MIRA Downtown</option>
+              <option value="LA-MIRA Mall">LA-MIRA Mall</option>
+              <option value="LA-MIRA Corner">LA-MIRA Corner</option>
+            </select>
+          </div>
+          <div>
+            <div class="checkout-label">نوع الطلب</div>
+            <div class="delivery-box" style="padding: 8px 12px; display: flex; gap: 15px;">
+              <label class="delivery-row"><input type="radio" name="deliveryType" id="deliveryTypeDelivery" checked> توصيل</label>
+              <label class="delivery-row"><input type="radio" name="deliveryType" id="deliveryTypePickup"> استلام</label>
+            </div>
+          </div>
+        </div>
+
+        <div id="addressWrap">
+          <div class="checkout-label">عنوان التوصيل بالتفصيل</div>
+          <textarea id="customerAddress" placeholder="المنطقة، الشارع، رقم الحطة أو العمارة..."></textarea>
+        </div>
+
+        <div class="checkout-grid">
+          <div>
+            <div class="checkout-label">طريقة الدفع</div>
+            <select id="paymentMethod">
+              <option value="cash">الدفع عند الاستلام (كاش)</option>
+              <option value="vodafone">فودافون كاش</option>
+            </select>
+          </div>
+          <div>
+            <div class="checkout-label">وقت التوصيل / الاستلام</div>
+            <input type="text" id="orderTime" placeholder="في أقرب وقت / الساعة كام؟">
+          </div>
+        </div>
+
+        <div>
+          <div class="checkout-label">كود الخصم (اختياري)</div>
+          <div style="display: flex; gap: 8px;">
+            <input type="text" id="couponCode" placeholder="أدخل الكود">
+            <button type="button" id="applyCoupon" style="padding: 0 15px; border:0; background:var(--wine); color:#fff; border-radius:10px; cursor:pointer;">تطبيق</button>
+          </div>
+          <small id="couponMsg" style="display:block; margin-top:4px;"></small>
+        </div>
+
+        <div>
+          <div class="checkout-label">ملاحظات إضافية</div>
+          <textarea id="orderNotes" placeholder="بدون سكر، صوص زيادة..."></textarea>
+        </div>
+      </div>
+
+      <div style="margin-top:15px; border-top:1px solid #eaded8; padding-top:12px;">
+        <div class="cost-row"><span>المجموع الفرعي:</span><strong id="subtotal">0 EGP</strong></div>
+        <div class="cost-row" id="deliveryFeeRow"><span>مصاريف التوصيل:</span><strong id="deliveryFee">40 EGP</strong></div>
+        <div class="cost-row"><span>الخصم:</span><strong id="discount">0 EGP</strong></div>
+        <div class="cost-row grand-total"><span>الإجمالي النهائي:</span><strong id="cartTotal">0 EGP</strong></div>
+      </div>
+
+      <div style="margin-top:18px;">
+        <button class="wa-btn" id="sendWhatsApp" type="button">إرسال الطلب عبر واتساب 📲</button>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
+        <button class="clear-btn" id="clearCart" type="button">مسح السلة بالكامل</button>
+        <span class="note">رقم الواتساب: 01500576313</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>40));
@@ -366,107 +472,436 @@ langBtn.addEventListener('click',()=>setLang(lang==='ar'?'en':'ar'));
 const menuBtn=document.getElementById('menuBtn'), mobileMenu=document.getElementById('mobileMenu');
 menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
 mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
-
-/* ===== LA-MIRA ordering ===== */
-const WHATSAPP_NUMBER='201500576313'; // 01500576313
-const DELIVERY_FEE=40;
-const COUPONS={}; // Add real codes here when available, e.g. {WELCOME10:{type:'percent',value:10}}
-const cart=JSON.parse(localStorage.getItem('laMiraCart')||'{}');
-const cartFab=document.getElementById('cartFab'), cartPanel=document.getElementById('cartPanel');
-const cartItems=document.getElementById('cartItems'), cartCount=document.getElementById('cartCount');
-const cartSummary=document.getElementById('cartSummary'), cartTotal=document.getElementById('cartTotal');
-const deliveryType=document.getElementById('deliveryType'), deliveryFeeRow=document.getElementById('deliveryFeeRow');
-const deliveryFeeEl=document.getElementById('deliveryFee'), subtotalEl=document.getElementById('subtotal');
-const couponInput=document.getElementById('couponCode'), couponMsg=document.getElementById('couponMsg'), discountEl=document.getElementById('discount');
-let appliedCoupon=null;
-function money(n){return Number(n).toLocaleString('en-US')+' جنيه'}
-function saveCart(){localStorage.setItem('laMiraCart',JSON.stringify(cart))}
-function getSubtotal(){return Object.values(cart).reduce((a,x)=>a+x.price*x.qty,0)}
-function getDiscount(sub){if(!appliedCoupon||!COUPONS[appliedCoupon])return 0;const c=COUPONS[appliedCoupon];return c.type==='percent'?sub*c.value/100:Math.min(c.value,sub)}
-function getDelivery(){return deliveryType.value==='delivery'?DELIVERY_FEE:0}
-function renderCart(){
- const entries=Object.values(cart), count=entries.reduce((a,x)=>a+x.qty,0);
- cartCount.textContent=count; cartFab.classList.toggle('show',count>0); saveCart();
- if(!entries.length){cartItems.innerHTML='<div class="empty-cart">السلة فاضية — اختار حاجة من القائمة ☕🍰</div>';cartSummary.style.display='none';return}
- cartSummary.style.display='block';
- cartItems.innerHTML=entries.map(x=>`<div class="cart-item"><div class="cart-item-info"><b>${x.name}</b><small>${money(x.price)} × ${x.qty}</small></div><div class="qty"><button onclick="changeQty('${x.key}',-1)">−</button><b>${x.qty}</b><button onclick="changeQty('${x.key}',1)">+</button></div></div>`).join('');
- updateTotals();
-}
-function updateTotals(){
- const sub=getSubtotal(), discount=getDiscount(sub), delivery=getDelivery(), total=Math.max(0,sub+delivery-discount);
- subtotalEl.textContent=money(sub); deliveryFeeEl.textContent=delivery?money(delivery):'مجاني'; discountEl.textContent=discount?'- '+money(discount):money(0); cartTotal.textContent=money(total); deliveryFeeRow.style.display=deliveryType.value==='delivery'?'flex':'flex';
-}
-function addItem(name,price){const key=name.replace(/[^a-zA-Z0-9\u0600-\u06FF]+/g,'_');cart[key]?cart[key].qty++:cart[key]={key,name,price:Number(price),qty:1};renderCart();cartPanel.classList.add('open')}
-function changeQty(key,delta){if(!cart[key])return;cart[key].qty+=delta;if(cart[key].qty<=0)delete cart[key];renderCart()}
-window.changeQty=changeQty;
-document.querySelectorAll('.add-btn').forEach(btn=>btn.addEventListener('click',()=>addItem(btn.dataset.name,btn.dataset.price)));
-cartFab.addEventListener('click',()=>cartPanel.classList.add('open'));
-document.getElementById('cartClose').addEventListener('click',()=>cartPanel.classList.remove('open'));
-cartPanel.addEventListener('click',e=>{if(e.target===cartPanel)cartPanel.classList.remove('open')});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')cartPanel.classList.remove('open')});
-deliveryType.addEventListener('change',()=>{document.getElementById('addressWrap').style.display=deliveryType.value==='delivery'?'block':'none';updateTotals()});
-document.getElementById('applyCoupon').addEventListener('click',()=>{const code=couponInput.value.trim().toUpperCase();if(!code){appliedCoupon=null;couponMsg.textContent='';updateTotals();return}if(!COUPONS[code]){appliedCoupon=null;couponMsg.textContent='الكود غير صالح أو غير متاح حالياً.';couponMsg.style.color='#9a3d3d'}else{appliedCoupon=code;couponMsg.textContent='تم تطبيق الخصم ✓';couponMsg.style.color='#287a49'}updateTotals()});
-document.getElementById('clearCart').addEventListener('click',()=>{if(confirm('مسح كل المنتجات من السلة؟')){Object.keys(cart).forEach(k=>delete cart[k]);saveCart();renderCart()}});
-document.getElementById('sendWhatsApp').addEventListener('click',()=>{
- const name=document.getElementById('customerName').value.trim(), phone=document.getElementById('customerPhone').value.trim();
- const branch=document.getElementById('branchSelect').value, type=deliveryType.value, address=document.getElementById('customerAddress').value.trim();
- const payment=document.getElementById('paymentMethod').value, time=document.getElementById('orderTime').value, notes=document.getElementById('orderNotes').value.trim(), entries=Object.values(cart);
- if(!entries.length)return alert('أضف منتجاً أولاً.');
- if(!name||!phone)return alert('اكتب الاسم ورقم الموبايل من فضلك.');
- if(!/^01[0125][0-9]{8}$/.test(phone.replace(/\s|-/g,'')))return alert('اكتب رقم موبايل مصري صحيح من 11 رقم.');
- if(type==='delivery'&&!address)return alert('اكتب عنوان التوصيل بالتفصيل.');
- const sub=getSubtotal(), discount=getDiscount(sub), delivery=getDelivery(), total=Math.max(0,sub+delivery-discount);
- const orderNo='LM-'+Date.now().toString().slice(-7);
- const lines=entries.map(x=>`• ${x.name} × ${x.qty} = ${x.price*x.qty} جنيه`).join('\n');
- const msg=`طلب جديد من موقع LA-MIRA\nرقم الطلب: ${orderNo}\n\nالاسم: ${name}\nالموبايل: ${phone}\nنوع الطلب: ${type==='delivery'?'دليفري':'استلام من الفرع'}\nالفرع: ${branch}\n${type==='delivery'?`العنوان: ${address}\n`:''}وقت الطلب: ${time||'أقرب وقت متاح'}\nطريقة الدفع: ${payment}\n\nالطلبات:\n${lines}\n\nالمجموع الفرعي: ${sub} جنيه\nالتوصيل: ${delivery} جنيه\nالخصم: ${discount} جنيه\nالإجمالي النهائي: ${total} جنيه\n${notes?`\nملاحظات: ${notes}`:''}`;
- window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,'_blank');
- localStorage.removeItem('laMiraCart');
-});
-renderCart();
 </script>
 
-<button class="cart-fab" id="cartFab" aria-label="سلة الطلبات">🛒<span class="cart-count" id="cartCount">0</span></button>
-<div class="cart-panel" id="cartPanel">
- <div class="cart-box" role="dialog" aria-modal="true" aria-label="سلة الطلبات">
-  <div class="cart-head"><div><h3>طلبك من LA-MIRA</h3><div class="order-number">راجع طلبك واختار طريقة الاستلام قبل الإرسال</div></div><button class="cart-close" id="cartClose">×</button></div>
-  <div id="cartItems"></div>
-  <div id="cartSummary" style="display:none">
-   <div class="cost-row"><span>المجموع الفرعي</span><strong id="subtotal">0 جنيه</strong></div>
-   <div class="cost-row"><span>التوصيل</span><strong id="deliveryFee">مجاني</strong></div>
-   <div class="cost-row"><span>الخصم</span><strong id="discount">0 جنيه</strong></div>
-   <div class="cart-total grand-total"><span>الإجمالي النهائي</span><span id="cartTotal">0 جنيه</span></div>
-   <div class="order-form">
-    <div class="checkout-grid">
-     <div><div class="checkout-label">الاسم *</div><input id="customerName" placeholder="اسمك بالكامل" autocomplete="name"></div>
-     <div><div class="checkout-label">رقم الموبايل *</div><input id="customerPhone" placeholder="01xxxxxxxxx" inputmode="tel" autocomplete="tel"></div>
-    </div>
-    <div class="delivery-box">
-     <div class="checkout-label">طريقة الاستلام</div>
-     <label class="delivery-row"><input type="radio" name="delivery" value="delivery" checked id="deliveryTypeDelivery"> دليفري</label>
-     <label class="delivery-row"><input type="radio" name="delivery" value="pickup" id="deliveryTypePickup"> استلام من الفرع</label>
-    </div>
-    <select id="deliveryType" style="display:none"><option value="delivery">delivery</option></select>
-    <div><div class="checkout-label">الفرع</div><select id="branchSelect"><option>LA-MIRA Downtown</option><option>LA-MIRA Mall</option><option>LA-MIRA Corner</option></select></div>
-    <div id="addressWrap"><div class="checkout-label">عنوان التوصيل *</div><textarea id="customerAddress" placeholder="المحافظة، المنطقة، الشارع، رقم العقار، الدور..." autocomplete="street-address"></textarea></div>
-    <div class="checkout-grid">
-     <div><div class="checkout-label">وقت الاستلام</div><select id="orderTime"><option value="">أقرب وقت متاح</option><option>بعد 30 دقيقة</option><option>بعد 60 دقيقة</option><option>سأحدد الوقت في الملاحظات</option></select></div>
-     <div><div class="checkout-label">طريقة الدفع</div><select id="paymentMethod"><option>عند الاستلام</option><option>في الفرع</option></select></div>
-    </div>
-    <div class="checkout-grid"><input id="couponCode" placeholder="كود الخصم (إن وجد)"><button type="button" class="btn" style="border:1px solid #d8c6bf;background:#f7eee9;color:var(--wine)" id="applyCoupon">تطبيق الكود</button></div>
-    <div id="couponMsg" class="note"></div>
-    <textarea id="orderNotes" placeholder="ملاحظات إضافية للطلب (اختياري)"></textarea>
-    <div class="note">بعد الضغط على الزر سيتم فتح واتساب برسالة الطلب جاهزة للمراجعة والإرسال.</div>
-    <button class="wa-btn" id="sendWhatsApp">إرسال الطلب على واتساب 📲</button>
-    <button class="clear-btn" id="clearCart" type="button">مسح السلة</button>
-   </div>
-  </div>
- </div>
-</div>
 <script>
-// Keep one visible delivery selector synchronized with the radio buttons.
-const deliveryTypeEl=document.getElementById('deliveryType');
-const deliveryRadios=[document.getElementById('deliveryTypeDelivery'),document.getElementById('deliveryTypePickup')];
-deliveryRadios.forEach(r=>r.addEventListener('change',()=>{deliveryTypeEl.value=r.checked?r.value:deliveryTypeEl.value;deliveryTypeEl.dispatchEvent(new Event('change'))}));
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* =========================
+     LA-MIRA ORDER SYSTEM
+  ========================== */
+
+  const WHATSAPP_NUMBER = '201500576313';
+  const DELIVERY_FEE = 40;
+
+  let cart = JSON.parse(localStorage.getItem('laMiraCart') || '{}');
+
+  const cartFab = document.getElementById('cartFab');
+  const cartPanel = document.getElementById('cartPanel');
+  const cartItems = document.getElementById('cartItems');
+  const cartCount = document.getElementById('cartCount');
+  const cartSummary = document.getElementById('cartSummary');
+
+  const subtotalEl = document.getElementById('subtotal');
+  const deliveryFeeEl = document.getElementById('deliveryFee');
+  const discountEl = document.getElementById('discount');
+  const cartTotal = document.getElementById('cartTotal');
+
+  const customerName = document.getElementById('customerName');
+  const customerPhone = document.getElementById('customerPhone');
+  const customerAddress = document.getElementById('customerAddress');
+  const branchSelect = document.getElementById('branchSelect');
+  const orderTime = document.getElementById('orderTime');
+  const paymentMethod = document.getElementById('paymentMethod');
+  const orderNotes = document.getElementById('orderNotes');
+
+  const deliveryRadio = document.getElementById('deliveryTypeDelivery');
+  const pickupRadio = document.getElementById('deliveryTypePickup');
+  const addressWrap = document.getElementById('addressWrap');
+
+  const cartClose = document.getElementById('cartClose');
+  const sendWhatsApp = document.getElementById('sendWhatsApp');
+  const clearCart = document.getElementById('clearCart');
+
+  const couponInput = document.getElementById('couponCode');
+  const couponMsg = document.getElementById('couponMsg');
+  const applyCoupon = document.getElementById('applyCoupon');
+
+  let appliedCoupon = null;
+
+  /* =========================
+     COUPONS
+  ========================== */
+
+  const COUPONS = {
+    // WELCOME10: { type: 'percent', value: 10 }
+  };
+
+  /* =========================
+     HELPERS
+  ========================== */
+
+  function money(value) {
+    return Number(value).toLocaleString('en-US') + ' EGP';
+  }
+
+  function saveCart() {
+    localStorage.setItem('laMiraCart', JSON.stringify(cart));
+  }
+
+  function getItems() {
+    return Object.values(cart);
+  }
+
+  function getCartCount() {
+    return getItems().reduce((total, item) => total + item.qty, 0);
+  }
+
+  function getSubtotal() {
+    return getItems().reduce(
+      (total, item) => total + (item.price * item.qty),
+      0
+    );
+  }
+
+  function getDeliveryFee() {
+    return deliveryRadio && deliveryRadio.checked ? DELIVERY_FEE : 0;
+  }
+
+  function getDiscount() {
+    if (!appliedCoupon) return 0;
+    const coupon = COUPONS[appliedCoupon];
+    if (!coupon) return 0;
+    const subtotal = getSubtotal();
+    if (coupon.type === 'percent') {
+      return subtotal * coupon.value / 100;
+    }
+    return Math.min(coupon.value, subtotal);
+  }
+
+  function getTotal() {
+    return Math.max(
+      0,
+      getSubtotal() + getDeliveryFee() - getDiscount()
+    );
+  }
+
+  /* =========================
+     CART UI
+  ========================== */
+
+  function updateCartBadge() {
+    const count = getCartCount();
+    if(cartCount) cartCount.textContent = count;
+    if(cartFab) {
+      if (count > 0) {
+        cartFab.classList.add('show');
+      } else {
+        cartFab.classList.remove('show');
+      }
+    }
+  }
+
+  function renderCart() {
+    const items = getItems();
+    updateCartBadge();
+    saveCart();
+
+    if (!items.length) {
+      if(cartItems) {
+        cartItems.innerHTML = `
+          <div class="empty-cart">
+            <div style="font-size:42px;margin-bottom:10px">🛒</div>
+            <strong style="display:block;font-size:17px;color:#65121b;margin-bottom:5px">
+              السلة فاضية
+            </strong>
+            <span>
+              اختار حاجة من قائمة LA-MIRA وابدأ طلبك
+            </span>
+          </div>
+        `;
+      }
+      if(cartSummary) cartSummary.style.display = 'none';
+      return;
+    }
+
+    if(cartSummary) cartSummary.style.display = 'block';
+
+    if(cartItems) {
+      cartItems.innerHTML = items.map(item => {
+        return `
+          <div class="cart-item">
+            <div style="width:58px;height:58px;border-radius:14px;overflow:hidden;flex-shrink:0;background:#eee;">
+              <img src="${item.image || ''}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover">
+            </div>
+            <div class="cart-item-info">
+              <b>${item.name}</b>
+              <small>${money(item.price)} × ${item.qty}</small>
+              <strong style="display:block;margin-top:4px;color:#65121b;">
+                ${money(item.price * item.qty)}
+              </strong>
+            </div>
+            <div class="qty">
+              <button type="button" onclick="changeQty('${item.key}', -1)">−</button>
+              <b>${item.qty}</b>
+              <button type="button" onclick="changeQty('${item.key}', 1)">+</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    updateTotals();
+  }
+
+  function updateTotals() {
+    const subtotal = getSubtotal();
+    const delivery = getDeliveryFee();
+    const discount = getDiscount();
+    const total = getTotal();
+
+    if(subtotalEl) subtotalEl.textContent = money(subtotal);
+    if(deliveryFeeEl) deliveryFeeEl.textContent = delivery > 0 ? money(delivery) : 'FREE';
+    if(discountEl) discountEl.textContent = discount > 0 ? '- ' + money(discount) : money(0);
+    if(cartTotal) cartTotal.textContent = money(total);
+
+    if(addressWrap && deliveryRadio) {
+      addressWrap.style.display = deliveryRadio.checked ? 'block' : 'none';
+    }
+  }
+
+  /* =========================
+     ADD PRODUCT
+  ========================== */
+
+  function addItem(name, price, image) {
+    const key = name.toLowerCase().replace(/[^a-zA-Z0-9\u0600-\u06FF]+/g, '_');
+    if (cart[key]) {
+      cart[key].qty += 1;
+    } else {
+      cart[key] = { key, name, price: Number(price), image: image || '', qty: 1 };
+    }
+    renderCart();
+    if(cartPanel) cartPanel.classList.add('open');
+
+    const buttons = document.querySelectorAll('.add-btn');
+    buttons.forEach(button => {
+      if (button.dataset.name === name) {
+        const original = button.innerHTML;
+        button.innerHTML = '✓';
+        button.style.transform = 'scale(1.15)';
+        setTimeout(() => {
+          button.innerHTML = original;
+          button.style.transform = '';
+        }, 700);
+      }
+    });
+  }
+
+  /* =========================
+     CHANGE QUANTITY
+  ========================== */
+
+  function changeQty(key, amount) {
+    if (!cart[key]) return;
+    cart[key].qty += amount;
+    if (cart[key].qty <= 0) {
+      delete cart[key];
+    }
+    renderCart();
+  }
+
+  window.changeQty = changeQty;
+
+  /* =========================
+     PRODUCT BUTTONS
+  ========================== */
+
+  document.querySelectorAll('.add-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const card = button.closest('.card');
+      const image = card?.querySelector('.card-img img')?.src || '';
+      addItem(button.dataset.name, button.dataset.price, image);
+    });
+  });
+
+  /* =========================
+     OPEN / CLOSE CART
+  ========================== */
+
+  if(cartFab) cartFab.addEventListener('click', () => { cartPanel.classList.add('open'); });
+  if(cartClose) cartClose.addEventListener('click', () => { cartPanel.classList.remove('open'); });
+  if(cartPanel) {
+    cartPanel.addEventListener('click', event => {
+      if (event.target === cartPanel) cartPanel.classList.remove('open');
+    });
+  }
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && cartPanel) cartPanel.classList.remove('open');
+  });
+
+  /* =========================
+     DELIVERY / PICKUP
+  ========================== */
+
+  if(deliveryRadio) deliveryRadio.addEventListener('change', updateTotals);
+  if(pickupRadio) pickupRadio.addEventListener('change', updateTotals);
+
+  /* =========================
+     COUPONS
+  ========================== */
+
+  if(applyCoupon) {
+    applyCoupon.addEventListener('click', () => {
+      const code = couponInput.value.trim().toUpperCase();
+      if (!code) {
+        appliedCoupon = null;
+        if(couponMsg) couponMsg.textContent = '';
+        updateTotals();
+        return;
+      }
+      if (!COUPONS[code]) {
+        appliedCoupon = null;
+        if(couponMsg) {
+          couponMsg.textContent = 'كود الخصم غير صالح أو غير متاح حالياً.';
+          couponMsg.style.color = '#9a3d3d';
+        }
+        updateTotals();
+        return;
+      }
+      appliedCoupon = code;
+      if(couponMsg) {
+        couponMsg.textContent = 'تم تطبيق الخصم بنجاح ✓';
+        couponMsg.style.color = '#287a49';
+      }
+      updateTotals();
+    });
+  }
+
+  /* =========================
+     CLEAR CART
+  ========================== */
+
+  if(clearCart) {
+    clearCart.addEventListener('click', () => {
+      if (!confirm('هل تريد مسح جميع المنتجات من السلة؟')) return;
+      cart = {};
+      appliedCoupon = null;
+      if(couponInput) couponInput.value = '';
+      if(couponMsg) couponMsg.textContent = '';
+      saveCart();
+      renderCart();
+    });
+  }
+
+  /* =========================
+     SEND WHATSAPP
+  ========================== */
+
+  if(sendWhatsApp) {
+    sendWhatsApp.addEventListener('click', () => {
+      const items = getItems();
+      if (!items.length) {
+        alert('السلة فاضية. أضف منتجاً أولاً.');
+        return;
+      }
+
+      const name = customerName.value.trim();
+      const phone = customerPhone.value.trim().replace(/\s|-/g, '');
+      const address = customerAddress.value.trim();
+      const branch = branchSelect.value;
+      const type = deliveryRadio && deliveryRadio.checked ? 'delivery' : 'pickup';
+      const time = orderTime.value.trim() || 'أقرب وقت متاح';
+      const payment = paymentMethod.value;
+      const notes = orderNotes.value.trim();
+
+      if (!name) {
+        alert('من فضلك اكتب اسمك.');
+        customerName.focus();
+        return;
+      }
+
+      if (!/^01[0125][0-9]{8}$/.test(phone)) {
+        alert('من فضلك اكتب رقم موبايل مصري صحيح مكون من 11 رقم.');
+        customerPhone.focus();
+        return;
+      }
+
+      if (type === 'delivery' && !address) {
+        alert('من فضلك اكتب عنوان التوصيل بالتفصيل.');
+        customerAddress.focus();
+        return;
+      }
+
+      const orderNumber = 'LM-' + Date.now().toString().slice(-7);
+
+      const productLines = items.map(item => {
+        const lineTotal = item.price * item.qty;
+        return `• ${item.name}\n  ${item.qty} × ${item.price} EGP = ${lineTotal} EGP`;
+      }).join('\n\n');
+
+      const subtotal = getSubtotal();
+      const delivery = getDeliveryFee();
+      const discount = getDiscount();
+      const total = getTotal();
+
+      const message =
+`*LA-MIRA — ORDER*
+
+━━━━━━━━━━━━━━━━━━
+
+*Order No:* ${orderNumber}
+
+*Customer Details*
+Name: ${name}
+Phone: ${phone}
+
+*Order Type*
+${type === 'delivery' ? 'Delivery 🚚' : 'Pickup 🛍️'}
+
+Branch:
+${branch}
+
+${type === 'delivery' ? `Address:\n${address}\n\n` : ''}Preferred Time:
+${time}
+
+Payment:
+${payment}
+
+━━━━━━━━━━━━━━━━━━
+
+*ORDER ITEMS*
+
+${productLines}
+
+━━━━━━━━━━━━━━━━━━
+
+Subtotal:
+${subtotal} EGP
+
+Delivery:
+${delivery} EGP
+
+Discount:
+${discount} EGP
+
+*TOTAL:
+${total} EGP*
+
+${notes ? `\nNotes:\n${notes}\n` : ''}
+
+━━━━━━━━━━━━━━━━━━
+
+Sent from LA-MIRA Website`;
+
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=` + encodeURIComponent(message);
+      window.open(whatsappURL, '_blank', 'noopener,noreferrer');
+
+      cart = {};
+      appliedCoupon = null;
+      saveCart();
+      renderCart();
+      if(cartPanel) cartPanel.classList.remove('open');
+    });
+  }
+
+  /* =========================
+     INITIAL RENDER
+  ========================== */
+
+  renderCart();
+
+});
 </script>
 </body>
 </html>
